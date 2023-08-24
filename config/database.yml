@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: vk_crm_production
-  username: vk_crm
-  password: <%= ENV["VK_CRM_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
