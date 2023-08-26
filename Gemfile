@@ -41,6 +41,9 @@ gem "bootsnap", require: false
 # For Vue.js
 gem 'vite_rails'
 
+# Linter
+gem 'rubocop-rails', require: false
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
