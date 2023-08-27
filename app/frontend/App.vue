@@ -18,6 +18,15 @@ export default {
     }
   },
 
+  created() {
+    fetch('/')
+    .then(response => response.json())
+    .then(data => {
+      this.messages = data.messages
+      console.log(this.messages)
+    })
+  },
+
   methods: {
     createPost() {
       const newPost = {
