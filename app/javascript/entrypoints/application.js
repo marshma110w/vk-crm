@@ -1,12 +1,4 @@
-import { createApp } from 'vue/dist/vue.esm-bundler';
+import { createApp } from 'vue/dist/vue.esm-bundler'
+import App from '../../frontend/App.vue'
 
-const app = createApp({
-  data() {
-    return {  
-      someShit: 'Vue.js is here now!'  
-    }
-  }
-})
-  
-app.mount('#app');
-console.log("app", app);
+createApp(App).mount('#app')
