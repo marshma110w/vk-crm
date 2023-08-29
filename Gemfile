@@ -44,6 +44,9 @@ gem 'vite_rails'
 # Linter
 gem 'rubocop-rails', require: false
 
+# Configuring CORS-policy to give access to rails API to our frontend
+gem 'rack-cors'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
