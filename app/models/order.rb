@@ -26,4 +26,6 @@ class Order < ApplicationRecord
   belongs_to :platform
   belongs_to :executor
   belongs_to :subject
+
+  has_one :chat
 end
