@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-class MessagesController < ApplicationController
-  def show; end
-
-  def index; end
-
-  def messages_list
+class MessagesController < ApplicationController::API
+  def list
     render json: { messages: Message.last(10) }
   end
 end
