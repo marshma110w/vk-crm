@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_012939) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_013546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_012939) do
   create_table "executors", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_admin", default: false, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "executor_id"
+    t.bigint "subject_id"
+    t.bigint "platform_id"
+    t.text "title"
+    t.text "description"
+    t.decimal "price"
+    t.datetime "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["executor_id"], name: "index_orders_on_executor_id"
+    t.index ["platform_id"], name: "index_orders_on_platform_id"
+    t.index ["subject_id"], name: "index_orders_on_subject_id"
   end
 
   create_table "platformings", force: :cascade do |t|

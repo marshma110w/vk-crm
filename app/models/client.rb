@@ -12,6 +12,7 @@
 class Client < ApplicationRecord
   has_many :platformings, as: :platformable
   has_many :platforms, through: :platformings
+  has_many :orders
 
   validates_presence_of :name
 end

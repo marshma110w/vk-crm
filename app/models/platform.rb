@@ -14,5 +14,7 @@ class Platform < ApplicationRecord
   has_many :clients, through: :platformings, source: :platformable, source_type: 'Client'
   has_many :executors, through: :platformings, source: :platformable, source_type: 'Executor'
 
+  has_many :orders
+
   validates_presence_of :name
 end
