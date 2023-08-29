@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_015020) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_015554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_015020) do
   create_table "executors", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_admin", default: false, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chat_id", null: false
+    t.string "messagable_type", null: false
+    t.bigint "messagable_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["messagable_type", "messagable_id"], name: "index_messages_on_messagable"
   end
 
   create_table "orders", force: :cascade do |t|
