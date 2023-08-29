@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :messages do
-    get 'list', to: 'messages#list'
+  namespace :front do
+    get 'messages_list', to: 'messages#list'
   end
 
   namespace :api do
