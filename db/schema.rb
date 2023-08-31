@@ -34,13 +34,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_015554) do
 
   create_table "messages", force: :cascade do |t|
     t.bigint "chat_id", null: false
-    t.string "messagable_type", null: false
-    t.bigint "messagable_id", null: false
+    t.string "user_type", null: false
+    t.bigint "user_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
-    t.index ["messagable_type", "messagable_id"], name: "index_messages_on_messagable"
+    t.index ["user_type", "user_id"], name: "index_messages_on_user"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_015554) do
     t.bigint "executor_id"
     t.bigint "subject_id"
     t.bigint "platform_id"
-    t.text "title"
+    t.string "title"
     t.text "description"
     t.decimal "price"
     t.datetime "deadline"
@@ -62,12 +62,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_015554) do
 
   create_table "platformings", force: :cascade do |t|
     t.bigint "platform_id", null: false
-    t.string "platformable_type", null: false
-    t.bigint "platformable_id", null: false
+    t.string "user_type", null: false
+    t.bigint "user_id", null: false
     t.bigint "external_user_id", null: false
     t.index ["platform_id", "external_user_id"], name: "index_platformings_on_platform_id_and_external_user_id"
     t.index ["platform_id"], name: "index_platformings_on_platform_id"
-    t.index ["platformable_type", "platformable_id"], name: "index_platformings_on_platformable"
+    t.index ["user_type", "user_id"], name: "index_platformings_on_user"
   end
 
   create_table "platforms", force: :cascade do |t|
@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_015554) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.text "name", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

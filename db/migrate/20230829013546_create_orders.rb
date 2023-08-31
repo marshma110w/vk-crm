@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.references :executor
       t.references :subject
       t.references :platform
-      t.text :title
+      t.string :title
       t.text :description
       t.decimal :price
       t.datetime :deadline

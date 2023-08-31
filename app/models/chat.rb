@@ -2,16 +2,17 @@
 
 # == Schema Information
 #
-# Table name: subjects
+# Table name: chats
 #
 #  id         :bigint           not null, primary key
-#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  order_id   :bigint           not null
 #
-class Subject < ApplicationRecord
-  has_many :orders
-
-  validates_presence_of :name
-  validates_uniqueness_of :name
+# Indexes
+#
+#  index_chats_on_order_id  (order_id)
+#
+class Chat < ApplicationRecord
+  belongs_to :order
 end

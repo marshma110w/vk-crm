@@ -6,7 +6,7 @@
 #  deadline    :datetime
 #  description :text
 #  price       :decimal(, )
-#  title       :text
+#  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  client_id   :bigint
@@ -24,8 +24,17 @@
 class Order < ApplicationRecord
   belongs_to :client
   belongs_to :platform
-  belongs_to :executor
-  belongs_to :subject
+  belongs_to :executor, optional: true
+  belongs_to :subject, optional: true
 
   has_one :chat
+
+  validate :client_has_platform
+
+  private
+
+  def client_has_platform
+    errors.add(:platform, 'must be in client platform list') if client&.platforms&.exclude? platform
+  end
+
 end

@@ -9,7 +9,7 @@ class CreateUsersAndPlatforms < ActiveRecord::Migration[7.0]
 
     create_table :platformings do |t|
       t.references :platform, null: false
-      t.references :platformable, polymorphic: true, index: true, null: false
+      t.references :user, polymorphic: true, index: true, null: false
       t.bigint :external_user_id, null: false
       t.index %i[platform_id external_user_id]
     end
