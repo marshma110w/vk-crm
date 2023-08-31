@@ -19,14 +19,16 @@ class Message < ApplicationRecord
   belongs_to :chat
   belongs_to :user, polymorphic: true
 
-  validates_presence_of :chat_id
   validates_presence_of :user_id
 
-  validate :user_belongs_to_chat
+  # TODO: Расскомментить когда начнем создавать чат и заказ при получении нового сообщения
 
-  private
+  # validates_presence_of :chat_id
+  # validate :user_belongs_to_chat
 
-  def user_belongs_to_chat
-    errors.add(:user, 'must belong to order') if user != chat.order.client && user != chat.order.executor
-  end
+  # private
+
+  # def user_belongs_to_chat
+  #   errors.add(:user, 'must belong to order') if user != chat.order.client && user != chat.order.executor
+  # end
 end

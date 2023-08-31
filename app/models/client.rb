@@ -24,7 +24,15 @@ class Client < ApplicationRecord
   has_many :messages, as: :user
 
   validates_presence_of :name
+<<<<<<< HEAD
   validates_presence_of :platform
   validates_presence_of :external_id
   validates_uniqueness_of :external_id, scope: :platform
+=======
+
+  # TODO: Переписать на нормальный запрос в этом же МР
+  def vk_id
+    platformings.find_by(platform_id: 1)&.external_user_id
+  end
+>>>>>>> 29334ae (Сервис по связыванию сообщений из вк с нашими)
 end
