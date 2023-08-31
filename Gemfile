@@ -42,6 +42,9 @@ gem 'rubocop-rails', require: false
 # Configuring CORS-policy to give access to rails API to our frontend
 gem 'rack-cors'
 
+# Let's make a HTTParty
+gem 'httparty'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

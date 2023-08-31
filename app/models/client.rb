@@ -14,4 +14,9 @@ class Client < ApplicationRecord
   has_many :messages, as: :user
 
   validates_presence_of :name
+
+  # TODO: Переписать на нормальный запрос в этом же МР
+  def vk_id
+    platformings.find_by(platform_id: 1)&.external_user_id
+  end
 end
