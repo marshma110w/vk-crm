@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Api
   class VkController < ActionController::API
     GROUP_ID = 201246423

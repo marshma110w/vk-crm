@@ -36,5 +36,4 @@ class Order < ApplicationRecord
   def client_has_platform
     errors.add(:platform, 'must be in client platform list') if client&.platforms&.exclude? platform
   end
-
 end
