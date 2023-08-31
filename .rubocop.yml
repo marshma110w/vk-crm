@@ -1,8 +1,8 @@
 AllCops:
   Exclude:
-    - db/schema.rb
-    - lib/tasks/auto_annotate_models.rake
-    - vendor/**/*.rb
+    - 'db/schema.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'vendor/**/*'
 
 Style/Documentation:
   Enabled: false
