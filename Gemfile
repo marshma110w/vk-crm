@@ -36,9 +36,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-# For Vue.js
-gem 'vite_rails'
-
 # Linter
 gem 'rubocop-rails', require: false
 
