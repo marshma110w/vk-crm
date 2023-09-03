@@ -8,10 +8,8 @@
 #  updated_at :datetime         not null
 #
 class Platform < ApplicationRecord
-  has_many :platformings
-  has_many :clients, through: :platformings, source: :user, source_type: 'Client'
-  has_many :executors, through: :platformings, source: :user, source_type: 'Executor'
-
+  has_one :client
+  has_one :executor
   has_many :orders
 
   validates_presence_of :name
