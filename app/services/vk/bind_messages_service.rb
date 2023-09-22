@@ -23,16 +23,13 @@ module Vk
     private
 
     def find_or_create_client
-      client = Client.joins(:platformings).find_by(platformings: { external_user_id: })
+      client = Client.find_by(external_id: external_user_id)
       return client if client
-
       return unless external_user
 
-      ActiveRecord::Base.transaction do
-        client = Client.create(name: "#{external_user['first_name']} #{external_user['last_name']}")
-        client.platformings.create(platform_id: PLATFORM_ID, external_user_id:)
-      end
-      client
+      Client.create(name: "#{external_user['first_name']} #{external_user['last_name']}",
+                    platform_id: PLATFORM_ID,
+                    external_id: external_user_id)
     end
 
     def external_user
@@ -42,7 +39,7 @@ module Vk
                               query: { user_ids: external_user_id, access_token:, v: VK_API_VERSION })
       return unless response.code == 200
 
-      @external_user = response['response'].first
+      @external_user = response['response']&.first
     end
 
     def access_token
