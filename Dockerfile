@@ -2,6 +2,7 @@
 # Development image
 ################################################################################
 FROM ruby:3.1.2-alpine
+ENV BUNDLER_VERSION=2.3.7
 RUN apk add --update --no-cache \
   binutils-gold \
   build-base \

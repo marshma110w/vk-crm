@@ -14,8 +14,11 @@ module Vk
     end
 
     def perform
-      client = find_or_create_client
-      client.messages.create!(body: message_body, chat_id: 1) # Пока хардкодим чат, чтоб создать уже наконец сообщение
+      unless (client = find_or_create_client)
+        Rails.logger.info("Failed to load message for client #{external_user_id}")
+        return
+      end
+      client.messages.new(body: message_body, chat_id: 1).save(validate: false) # Пока забиваем на чат
     rescue StandardError => e
       Rails.logger.fatal(e)
     end
