@@ -1,0 +1,5 @@
+client:
+  id: 1
+  name: 'Peter Petrov'
+  external_id: 4321
+  platform_id: 1
